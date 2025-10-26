@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class Stream_11 {
@@ -14,5 +16,15 @@ public class Stream_11 {
                 .toArray();
 
         System.out.println(Arrays.toString(c));
+
+//        Get top 3 elements from the list
+        List<Integer> listOfIntegers = Arrays.asList(71, 18, 42, 21, 67, 32, 95,
+                14, 56, 87);
+        List<Integer> res = listOfIntegers
+                .stream()
+                .sorted(Comparator.comparingInt(Integer::intValue).reversed())
+                .limit(3)
+                .toList();
+        System.out.println(res);
     }
 }
