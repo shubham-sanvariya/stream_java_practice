@@ -1,4 +1,3 @@
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Stream_14 {
@@ -7,6 +6,7 @@ public class Stream_14 {
 
         int i = 15623;
         int res = Stream.of(String.valueOf(i).split("")).mapToInt(Integer::valueOf).sum();
+//        int res = Stream.of(String.valueOf(i).split("")).collect(Collectors.summingInt(Integer::parseInt));
         System.out.println(res);
     }
 }
