@@ -1,4 +1,8 @@
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Stream_23 {
 //    Max Product in a given array
@@ -13,5 +17,20 @@ public class Stream_23 {
                 ).max().orElse(0);
 
         System.out.println(max_product);
+
+//         First non-repeating character in a String
+
+        String input = "aabbcdeffg";
+        String res = Stream.of(input.split("")).collect(Collectors.groupingBy(
+                Function.identity(),
+                Collectors.counting()
+        )).entrySet()
+                .stream()
+                .filter(x -> x.getValue() == 1)
+                .map(Map.Entry::getKey)
+                .findFirst()
+                .orElse(null);
+
+        System.out.println(res);
     }
 }
