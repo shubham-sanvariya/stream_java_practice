@@ -40,6 +40,11 @@ public class Stream_26 {
 
         System.out.println(resAvgGra);
 //        5. List students sorted by age and then by grade
+        List<Student> resSortAgeGrade = students.stream()
+                .sorted(Comparator.comparingInt(Student::age))
+                .sorted(Comparator.comparingDouble(Student::grade))
+                .toList();
+        resSortAgeGrade.forEach(s -> System.out.println(s.Firstname + " " + s.age +  " " + s.grade));
 //        6. Create a comma-separated list of student names
 //        7. Check if all students are above 18
 //        8. Find the department with the most students
