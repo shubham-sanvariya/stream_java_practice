@@ -1,6 +1,8 @@
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Stream_26 {
     public static void main(String[] args) {
@@ -20,6 +22,12 @@ public class Stream_26 {
             Student resHG = students.stream().max(Comparator.comparingDouble(Student::grade)).orElse(null);
         System.out.println(resHG);
 //        3. Count the number of students in each department
+        Map<String , Integer> resDepCount = students.stream().collect(Collectors.groupingBy(
+                Student::department,
+                Collectors.collectingAndThen(Collectors.counting(), Long::intValue)
+        ));
+
+        System.out.println(resDepCount);
 //        4. Find the average grade per department
 //        5. List students sorted by age and then by grade
 //        6. Create a comma-separated list of student names
