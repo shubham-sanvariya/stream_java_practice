@@ -29,6 +29,16 @@ public class Stream_26 {
 
         System.out.println(resDepCount);
 //        4. Find the average grade per department
+        Map<String, Double> resAvgGra = students.stream().collect(
+                Collectors.groupingBy(
+                        Student::department,
+                        Collectors.averagingDouble(student -> Math.round(student.grade * 100.0) / 100.0)
+                )
+        );
+
+        resAvgGra.replaceAll((dept, avg) -> Math.round(avg * 100.0) / 100.0);
+
+        System.out.println(resAvgGra);
 //        5. List students sorted by age and then by grade
 //        6. Create a comma-separated list of student names
 //        7. Check if all students are above 18
