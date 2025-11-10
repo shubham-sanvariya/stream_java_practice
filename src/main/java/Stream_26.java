@@ -49,6 +49,8 @@ public class Stream_26 {
             List<String> resNames = students.stream().map(s -> s.Firstname + " " +  s.lastname).toList();
         System.out.println(resNames);
 //        7. Check if all students are above 18
+        boolean resAbove18 = students.stream().allMatch(s -> s.age > 18);
+        System.out.println(resAbove18);
 //        8. Find the department with the most students
 //        9. Divide students into those who have grades above 8.0 and below
 //        10. Find the student with the longest full name
