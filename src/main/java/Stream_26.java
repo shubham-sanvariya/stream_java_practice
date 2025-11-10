@@ -46,6 +46,8 @@ public class Stream_26 {
                 .toList();
         resSortAgeGrade.forEach(s -> System.out.println(s.Firstname + " " + s.age +  " " + s.grade));
 //        6. Create a comma-separated list of student names
+            List<String> resNames = students.stream().map(s -> s.Firstname + " " +  s.lastname).toList();
+        System.out.println(resNames);
 //        7. Check if all students are above 18
 //        8. Find the department with the most students
 //        9. Divide students into those who have grades above 8.0 and below
