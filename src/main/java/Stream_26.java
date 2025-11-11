@@ -75,6 +75,17 @@ public class Stream_26 {
 
         System.out.println(resMostSt);
 //        9. Divide students into those who have grades above 8.0 and below
+
+        List<List<Student>> resGraAbv = new ArrayList<>(List.of(new ArrayList<>(), new ArrayList<>()));
+        students.forEach(s -> {
+            if (s.grade > 8.0){
+                resGraAbv.getFirst().add(s);
+            }else {
+                resGraAbv.get(1).add(s);
+            }
+        });
+
+        resGraAbv.forEach(System.out::println);
 //        10. Find the student with the longest full name
 
 
