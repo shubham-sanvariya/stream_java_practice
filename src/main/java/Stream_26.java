@@ -1,7 +1,4 @@
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Stream_26 {
@@ -52,6 +49,31 @@ public class Stream_26 {
         boolean resAbove18 = students.stream().allMatch(s -> s.age > 18);
         System.out.println(resAbove18);
 //        8. Find the department with the most students
+        String resMostSt = students.stream().collect(
+                Collectors.groupingBy(
+                        Student::department,
+                        Collectors.collectingAndThen(Collectors.counting(),Long::intValue)
+                )
+        ).entrySet()
+                .stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse(null);
+
+        Map<String, Integer> resMostStCount = students.stream().collect(
+                Collectors.groupingBy(
+                        Student::department,
+                        Collectors.collectingAndThen(Collectors.counting(), Long::intValue)
+                )
+        ).entrySet()
+                .stream()
+                .max(Map.Entry.comparingByValue())
+                .map(entry -> Map.of(entry.getKey(),entry.getValue()))
+                .orElse(Collections.emptyMap());
+
+        System.out.println(resMostStCount);
+
+        System.out.println(resMostSt);
 //        9. Divide students into those who have grades above 8.0 and below
 //        10. Find the student with the longest full name
 
