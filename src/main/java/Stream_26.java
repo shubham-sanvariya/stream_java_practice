@@ -87,7 +87,14 @@ public class Stream_26 {
 
         resGraAbv.forEach(System.out::println);
 //        10. Find the student with the longest full name
+            Student resLongName = students.stream().max(Comparator.comparingInt(s ->s.Firstname.length() + s.lastname.length())).orElse(null);
 
+            students.forEach(s -> {
+                int totalLength = s.Firstname.length() + s.lastname.length();
+             System.out.println(s.Firstname + " " + totalLength);
+            });
+
+        System.out.println(resLongName);
 
     }
 
