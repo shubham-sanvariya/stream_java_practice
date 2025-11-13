@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Stream_36 {
     public static void main(String[] args) {
@@ -22,6 +24,13 @@ public class Stream_36 {
                 .toList();
         System.out.println(resNaDepDes);
 //        2. Group Employees by department and count how many Employees are in each department
+        Map<String, Integer> resDepEmpCou = employees.stream()
+                .collect(Collectors.groupingBy(
+                        Employee::department,
+                        Collectors.collectingAndThen(Collectors.counting(), Long::intValue)
+                ));
+
+        System.out.println(resDepEmpCou);
 //        3.Find the youngest female Employee.
 //        4. Create a map of department -> list of Employee names.
 //        5. Find the average age of Employees in each department.
