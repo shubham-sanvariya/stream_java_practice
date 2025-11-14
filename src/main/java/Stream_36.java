@@ -32,6 +32,11 @@ public class Stream_36 {
 
         System.out.println(resDepEmpCou);
 //        3.Find the youngest female Employee.
+        Employee resYouFem = employees.stream()
+                .filter(e -> e.gender.equals("Female"))
+                .min(Comparator.comparingInt(Employee::age))
+                .orElse(null);
+        System.out.println(resYouFem);
 //        4. Create a map of department -> list of Employee names.
 //        5. Find the average age of Employees in each department.
 //        6. Get a list of unique departments Employees belong to
