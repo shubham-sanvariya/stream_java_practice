@@ -38,6 +38,13 @@ public class Stream_36 {
                 .orElse(null);
         System.out.println(resYouFem);
 //        4. Create a map of department -> list of Employee names.
+        Map<String, List<String> > resDepEmpNam = employees.stream()
+                .collect(Collectors.groupingBy(
+                   Employee::department,
+                        Collectors.mapping(Employee::name, Collectors.toList())
+                ));
+
+        System.out.println(resDepEmpNam);
 //        5. Find the average age of Employees in each department.
 //        6. Get a list of unique departments Employees belong to
 //        7. Partition Employees into male and female groups, then list their names.
