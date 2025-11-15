@@ -46,6 +46,12 @@ public class Stream_36 {
 
         System.out.println(resDepEmpNam);
 //        5. Find the average age of Employees in each department.
+        Map<String , Double> resAvgAgeEmp = employees.stream()
+                .collect(Collectors.groupingBy(
+                        Employee::department,
+                        Collectors.averagingDouble(Employee::age)
+                ));
+        System.out.println(resAvgAgeEmp);
 //        6. Get a list of unique departments Employees belong to
 //        7. Partition Employees into male and female groups, then list their names.
 //        8. Group employees by department, then within each department find the oldest employee
