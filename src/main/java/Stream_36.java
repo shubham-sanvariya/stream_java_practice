@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Stream_36 {
@@ -53,6 +50,11 @@ public class Stream_36 {
                 ));
         System.out.println(resAvgAgeEmp);
 //        6. Get a list of unique departments Employees belong to
+        Set<String > resUniDepEmp = employees.stream()
+                .map(Employee::department)
+                .collect(Collectors.toSet());
+
+        System.out.println(resUniDepEmp);
 //        7. Partition Employees into male and female groups, then list their names.
 //        8. Group employees by department, then within each department find the oldest employee
 //        9. Build a map of gender with average age of employees sorted by average age descending
