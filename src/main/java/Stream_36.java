@@ -1,4 +1,6 @@
 import java.util.*;
+import java.util.function.BinaryOperator;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Stream_36 {
@@ -64,6 +66,15 @@ public class Stream_36 {
 
         System.out.println(resGenNam);
 //        8. Group employees by department, then within each department find the oldest employee
+        Map<String, Employee> oldestEmployee = employees.stream()
+                .collect(Collectors
+                        .toMap(
+                                Employee::department, // return dept
+                                Function.identity(), // returns Employee
+                                BinaryOperator.maxBy(Comparator.comparingInt(Employee::age)) // returns Employee according to the given function we provide
+                        ));
+
+        System.out.println(oldestEmployee);
 //        9. Build a map of gender with average age of employees sorted by average age descending
 //        10. For each department, find the youngest employee, but instead of returning the employee object,
 //        return only their name in uppercase.
