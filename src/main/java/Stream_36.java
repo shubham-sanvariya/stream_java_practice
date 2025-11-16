@@ -56,6 +56,13 @@ public class Stream_36 {
 
         System.out.println(resUniDepEmp);
 //        7. Partition Employees into male and female groups, then list their names.
+        Map<String , List<String> > resGenNam = employees.stream()
+                .collect(Collectors.groupingBy(
+                        Employee::gender,
+                        Collectors.mapping(Employee::name, Collectors.toList())
+                ));
+
+        System.out.println(resGenNam);
 //        8. Group employees by department, then within each department find the oldest employee
 //        9. Build a map of gender with average age of employees sorted by average age descending
 //        10. For each department, find the youngest employee, but instead of returning the employee object,
