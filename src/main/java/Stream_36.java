@@ -76,6 +76,25 @@ public class Stream_36 {
 
         System.out.println(oldestEmployee);
 //        9. Build a map of gender with average age of employees sorted by average age descending
+
+//        Note -> if you don't use linked hash map the sorting order will not be maintained by a normal HashMap
+        LinkedHashMap<String, Integer> resGenAvgAge = employees.stream()
+                .collect(Collectors.groupingBy(
+                        Employee::gender,
+                        Collectors.collectingAndThen(Collectors.averagingInt(Employee::age), Double::intValue)
+                ))
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (e1, e2) -> e1,
+                        LinkedHashMap::new
+                ));
+
+
+        System.out.println(resGenAvgAge);
 //        10. For each department, find the youngest employee, but instead of returning the employee object,
 //        return only their name in uppercase.
 //        11. Return a map where keys will be first letter of the name and value will the set of names starting with
