@@ -97,6 +97,17 @@ public class Stream_36 {
         System.out.println(resGenAvgAge);
 //        10. For each department, find the youngest employee, but instead of returning the employee object,
 //        return only their name in uppercase.
+
+        Map<String, String > resDepEmpName = employees.stream()
+                .collect(Collectors.groupingBy(
+                        Employee::department,
+                        Collectors.collectingAndThen(
+                                Collectors.minBy(Comparator.comparingInt(Employee::age)),
+                                emp -> emp.map(e -> e.name.toUpperCase()).orElse(null)
+                        )
+                ));
+
+        System.out.println(resDepEmpName);
 //        11. Return a map where keys will be first letter of the name and value will the set of names starting with
 //        that letter, no solution provided, try on your own.
 
