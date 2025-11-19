@@ -109,9 +109,15 @@ public class Stream_36 {
 
         System.out.println(resDepEmpName);
 //        11. Return a map where keys will be first letter of the name and value will the set of names starting with
-//        that letter, no solution provided, try on your own.
+//        that letter, no solution provided, try on your own
 
+        Map<Character, List<String>> resLetNam = employees.stream()
+                .collect(Collectors.groupingBy(
+                        emp -> emp.name.charAt(0),
+                        Collectors.mapping(emp -> emp.name, Collectors.toList())
+                ));
+
+        System.out.println(resLetNam);
     }
-
     record Employee(String  name, String  department, int age, String  gender ){}
 }
